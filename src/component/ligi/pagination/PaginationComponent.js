@@ -1,6 +1,7 @@
-import { Pagination, Container, Row, Col } from "react-bootstrap";
+import {  Container, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { getAllLigi } from "../../../api/Api";
+import { Pagination } from 'antd';
 
 const PaginationComponent = ({ getIndex }) => {
   const [countLigi, setCount] = useState(null);
@@ -55,7 +56,12 @@ const PaginationComponent = ({ getIndex }) => {
   return (
     <Container className="d-flex justify-content-center mt-5">
       <Row>
-        <Pagination>{arrPageNumber}</Pagination>
+        {/* <Pagination>{arrPageNumber}</Pagination> */}
+        <Pagination
+      showSizeChanger
+      defaultCurrent={1}
+      total={countLigi}
+    />
       </Row>
     </Container>
   );
