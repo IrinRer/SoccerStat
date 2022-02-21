@@ -63,9 +63,18 @@ const transformLigi = (ligi) => {
 
   const transformMatches = (match) => {
     return {
+      id: match.match_id,
       name: match.league_name,
+      date: match.match_date,
+      time: match.match_time,
       status: match.match_status,
       awayteamName: match.match_awayteam_name,
-      hometeamName: match.match_hometeam_name
+      hometeamName: match.match_hometeam_name,
+      hometeamFtscore: match.match_hometeam_ft_score || '',
+      awayteamFtscore: match.match_awayteam_ft_score || '',
+      hometeamExtrascore: match.match_hometeam_extra_score || '',
+      awayteamExtrascore: match.match_awayteamextra_score || '',
+      hometeamPenalty: match.match_hometeam_penalty_score || '',
+      awayteamPenalty: match.match_awayteam_penalty_score || ''
     };
 };
