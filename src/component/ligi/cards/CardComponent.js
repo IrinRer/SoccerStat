@@ -1,7 +1,5 @@
 import { Card, Container, Row, Col } from "react-bootstrap";
-// import { Input } from "antd";
 import { Link } from "react-router-dom";
-// const { Search } = Input;
 
 const CardComponent = ({ fillter }) => {
   function onRender(arr) {

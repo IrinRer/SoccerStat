@@ -5,11 +5,12 @@ import CardComponent from "./cards/CardComponent";
 import PaginationComponent from "./pagination/PaginationComponent";
 import SearchComponent from "./Search/SearchComponent";
 
+
 const Ligi = () => {
   const [ligi, setLigi] = useState([]);
   const [loading, setLoading] = useState(false);
   const [firstIndex, setFirstIndex] = useState(1);
-  const [lastIndex, setLastIndex] = useState(10);
+  const [lastIndex, setLastIndex] = useState(16);
   const [fillter, setFillter] = useState(ligi);
 
   useEffect(() => {
@@ -33,17 +34,17 @@ const Ligi = () => {
 
   const getFillterLigi = (arr) => {
     setFillter(arr);
-  }
+  };
 
   return (
     <>
-      <SearchComponent ligi={ligi} getFillterLigi={getFillterLigi}/>
+      <SearchComponent ligi={ligi} getFillterLigi={getFillterLigi} />
       {loading ? (
         <Spinner />
       ) : (
-        <CardComponent ligi={ligi} getIndex={getIndex} fillter={fillter}/>
+        <CardComponent ligi={ligi} getIndex={getIndex} fillter={fillter} />
       )}
-       <PaginationComponent ligi={ligi} getIndex={getIndex} />
+      <PaginationComponent ligi={ligi} getIndex={getIndex} />
     </>
   );
 };

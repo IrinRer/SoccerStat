@@ -18,16 +18,15 @@
 //   },
 // };
 
-const _apiBase = "http://api.football-data.org/v2/";
-const _apiKey = "API token=5ec0722770094e06af6c5f4f5e67e770";
+const apiBase = "https://apiv3.apifootball.com/";
+const apiKey = "APIkey=c786da0b260f3d848f9c68ad8d809ddbc715c972f34a77cdddd97c8839de73c0";
 
 const getResource = async (url) => {
   let res = await fetch(url, {
     credentials: "include",
     headers: {
-      "X-Auth-Token": "5ec0722770094e06af6c5f4f5e67e770",
-      // 'Access-Control-Allow-Origin': 'http://localhost:3000',
-      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'http://localhost:3000'
+      // 'Content-Type': 'application/json',
     }
 });
 
@@ -39,37 +38,34 @@ const getResource = async (url) => {
 };
 
 export const getAllLigi = async () => {
-  const res = await getResource(`${_apiBase}competitions/`);
-  return res.competitions.map(transformLigi);
+  const res = await getResource(`${apiBase}?action=get_leagues&${apiKey}`);
+  return res.map(transformLigi);
 };
 
-export const totalCountApi = async () => {
-  const res = await getResource(`${_apiBase}competitions/`);
-  return res.count; 
-}
+// export const totalCountApi = async () => {
+//   const res = await getResource(`${_apiBase}competitions/`);
+//   return res.count; 
+// }
 
-export const getMatchesApi = async (id) => {
+export const getLiga = async (id) => {
   debugger;
-  const res = await getResource(`${_apiBase}competitions/${id}/matches`);
-  return transformMatches(res);
+  const res = await getResource(`${apiBase}?action=get_events&from=2022-02-12&to=2022-03-1&league_id=${id}&${apiKey}`);
+  return res.map(transformMatches);
 }
 
 const transformLigi = (ligi) => {
   return {
-    id: ligi.id,
-    name: ligi.name,
-    country: ligi.area.name
+    id: ligi.league_id,
+    name: ligi.league_name,
+    country: ligi.country_name
   };
 }
 
   const transformMatches = (match) => {
     return {
-      id: match.id,
-      startDate: match.season.startDate,
-      endDate: match.season.endDate,
-      utcDate: match.utcDate,
-      status: match.status,
-      homeTeam: match.homeTeam.name,
-      homeTeam: match.awayTeam.name
+      name: match.league_name,
+      status: match.match_status,
+      awayteamName: match.match_awayteam_name,
+      hometeamName: match.match_hometeam_name
     };
 };
