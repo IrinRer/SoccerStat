@@ -5,6 +5,7 @@ import { Table } from "antd";
 import { getLiga } from "../../api/Api";
 import BreadCrumbMatch from "../breadCrumb/BreadCrumbMatch";
 import Spinner from "../spinner/Spinner";
+import FillterDate from "../fillter/FillterDate";
 
 const LigiItem = () => {
   const { id } = useParams();
@@ -16,13 +17,11 @@ const LigiItem = () => {
   }, []);
 
   const onRequest = () => {
-    console.log(`onrequest`);
     setLoading(true);
     getLiga(id).then(setLigiItem);
   };
 
   const setLigiItem = (liga) => {
-    console.log(`setligiitem`);
     setLiga(liga);
     setLoading(false);
   };
@@ -63,14 +62,23 @@ const LigiItem = () => {
     },
     {
       title: "Счет",
-      dataIndex: "score",
-      key: "score",
+      dataIndex: "scoreMatch",
+      key: "scoreMatch",
     },
   ];
 
   function onRender(arr) {
     let items = arr.map((item) => {
       nameLiga = item.name;
+      let score =
+        item.hometeamFtscore || item.awayteamFtscore
+          ? `${item.hometeamFtscore} : ${item.awayteamFtscore}`
+          : "";
+      let scoreOptionally =
+        item.hometeamExtrascore || item.awayteamExtrascore
+          ? `${item.hometeamExtrascore} : ${item.awayteamExtrascore}`
+          : "";
+
       return {
         key: item.id,
         date: item.date,
@@ -78,7 +86,7 @@ const LigiItem = () => {
         status: item.status,
         team1: item.hometeamName,
         team2: item.awayteamName,
-        score: `${item.hometeamFtscore} : ${item.awayteamFtscore} ${item.hometeamExtrascore}  ${item.awayteamExtrascore}`,
+        scoreMatch: scoreOptionally ?`${score} (${scoreOptionally})` : score
       };
     });
     return items;
@@ -89,13 +97,18 @@ const LigiItem = () => {
   return (
     <>
       <BreadCrumbMatch nameLiga={nameLiga} />
-      <Container>
-        <Row>
-          <Col>
-            <Table columns={columns} dataSource={content} />
-          </Col>
-        </Row>
-      </Container>
+      <FillterDate id={id} setLigiItem={setLigiItem} />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <Container>
+          <Row>
+            <Col>
+              <Table columns={columns} dataSource={content} />
+            </Col>
+          </Row>
+        </Container>
+      )}
     </>
   );
 };

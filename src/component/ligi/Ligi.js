@@ -28,7 +28,6 @@ const Ligi = () => {
   };
 
   const setAllLigi = (ligi) => {
-    // setLigi(ligi.slice(firstIndex, lastIndex));
     setLigi(ligi);
     setLoading(false);
   };
@@ -45,7 +44,6 @@ const Ligi = () => {
       ) : (
         <CardComponent ligi={ligi} getIndex={getIndex} fillter={fillter} />
       )}
-      {/* <PaginationComponent ligi={ligi} getIndex={getIndex} /> */}
     </>
   );
 };

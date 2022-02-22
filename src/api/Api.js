@@ -21,6 +21,11 @@
 const apiBase = "https://apiv3.apifootball.com/";
 const apiKey = "APIkey=c786da0b260f3d848f9c68ad8d809ddbc715c972f34a77cdddd97c8839de73c0";
 
+let dateNow = new Date(); 
+let dateDefaultFrom = `${dateNow.getFullYear()}-${dateNow.getMonth()}-${dateNow.getDate()}`;
+let dateDefaultTo= new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate() + 15);
+dateDefaultTo = `${dateDefaultTo.getFullYear()}-${dateDefaultTo.getMonth()}-${dateDefaultTo.getDate()}`
+
 const getResource = async (url) => {
   let res = await fetch(url, {
     credentials: "include",
@@ -47,9 +52,14 @@ export const getAllLigi = async () => {
 //   return res.count; 
 // }
 
-export const getLiga = async (id) => {
-  debugger;
-  const res = await getResource(`${apiBase}?action=get_events&from=2022-02-12&to=2022-03-1&league_id=${id}&${apiKey}`);
+// export const getLiga = async (id) => {
+//   debugger;
+//   const res = await getResource(`${apiBase}?action=get_events&from=2022-02-12&to=2022-03-1&league_id=${id}&${apiKey}`);
+//   return res.map(transformMatches);
+// }
+
+export const getLiga = async (id, from=dateDefaultFrom, to=dateDefaultTo) => {
+  const res = await getResource(`${apiBase}?action=get_events&from=${from}&to=${to}&league_id=${id}&${apiKey}`);
   return res.map(transformMatches);
 }
 
@@ -67,7 +77,7 @@ const transformLigi = (ligi) => {
       name: match.league_name,
       date: match.match_date,
       time: match.match_time,
-      status: match.match_status,
+      status: match.match_status || 'Not yet',
       awayteamName: match.match_awayteam_name,
       hometeamName: match.match_hometeam_name,
       hometeamFtscore: match.match_hometeam_ft_score || '',

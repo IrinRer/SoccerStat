@@ -17,3 +17,12 @@ code {
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
+.ant-list-pagination {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.ant-table-pagination-right {
+  justify-content: center;
+}

@@ -24,6 +24,7 @@ const SearchComponent = ({ ligi, getFillterLigi }) => {
             placeholder="Найти"
             onChange={(e) => setValue(e.target.value)}
             style={{ width: 300 }}
+            allowClear
           />
         </Col>
       </Row>
