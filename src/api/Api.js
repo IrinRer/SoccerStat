@@ -1,5 +1,8 @@
 // import * as axios from "axios";
 
+import { Navigate } from "react-router-dom";
+import NotFound from "../component/pageNotFound/NotFound";
+
 // const baseURL = "http://api.football-data.org/v2/";
 
 // let instance = axios.create({
@@ -59,6 +62,7 @@ export const getAllLigi = async () => {
 // }
 
 export const getLiga = async (id, from=dateDefaultFrom, to=dateDefaultTo) => {
+  debugger;
   const res = await getResource(`${apiBase}?action=get_events&from=${from}&to=${to}&league_id=${id}&${apiKey}`);
   return res.map(transformMatches);
 }

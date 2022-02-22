@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { getAllLigi } from "../../api/Api";
 import Spinner from "../spinner/Spinner";
 import CardComponent from "./cards/CardComponent";
-import PaginationComponent from "./pagination/PaginationComponent";
 import SearchComponent from "./Search/SearchComponent";
 
 

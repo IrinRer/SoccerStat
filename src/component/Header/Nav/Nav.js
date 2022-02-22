@@ -11,7 +11,7 @@ const NavComponent = () => {
             </LinkContainer>
           </Nav.Item>
           <Nav.Item as="li">
-            <LinkContainer  to="/">
+            <LinkContainer  to="/team">
               <Nav.Link>Команды</Nav.Link>
             </LinkContainer>
           </Nav.Item>

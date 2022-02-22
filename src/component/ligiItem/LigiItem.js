@@ -6,11 +6,13 @@ import { getLiga } from "../../api/Api";
 import BreadCrumbMatch from "../breadCrumb/BreadCrumbMatch";
 import Spinner from "../spinner/Spinner";
 import FillterDate from "../fillter/FillterDate";
+import NotFound from "../pageNotFound/NotFound";
 
 const LigiItem = () => {
   const { id } = useParams();
   const [liga, setLiga] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     onRequest();
@@ -18,7 +20,7 @@ const LigiItem = () => {
 
   const onRequest = () => {
     setLoading(true);
-    getLiga(id).then(setLigiItem);
+    getLiga(id).then(setLigiItem).catch(setErrorMess);
   };
 
   const setLigiItem = (liga) => {
@@ -26,9 +28,17 @@ const LigiItem = () => {
     setLoading(false);
   };
 
-  if (!liga) {
+  const setErrorMess = () => {
+    setError(true);
+  };
+
+  if (!liga && !error) {
     return <Spinner />;
+  } else if(error) {
+    return <NotFound/>
   }
+
+
 
   let nameLiga = "";
 
@@ -86,29 +96,37 @@ const LigiItem = () => {
         status: item.status,
         team1: item.hometeamName,
         team2: item.awayteamName,
-        scoreMatch: scoreOptionally ?`${score} (${scoreOptionally})` : score
+        scoreMatch: scoreOptionally ? `${score} (${scoreOptionally})` : score,
       };
     });
     return items;
   }
 
   let content = onRender(liga);
-  console.log(content);
+
+  // const errorMessage = error ? <NotFound /> : null;
+  // const spinner = loading ? <Spinner /> : null;
+  // const view = !(spinner || errorMessage) ? (
+  //   <Container>
+  //     <Row>
+  //       <Col>
+  //         <Table columns={columns} dataSource={content} />
+  //       </Col>
+  //     </Row>
+  //   </Container>
+  // ) : null;
+
   return (
     <>
       <BreadCrumbMatch nameLiga={nameLiga} />
       <FillterDate id={id} setLigiItem={setLigiItem} />
-      {loading ? (
-        <Spinner />
-      ) : (
-        <Container>
-          <Row>
-            <Col>
-              <Table columns={columns} dataSource={content} />
-            </Col>
-          </Row>
-        </Container>
-      )}
+      <Container>
+      <Row>
+        <Col>
+          <Table columns={columns} dataSource={content} />
+        </Col>
+      </Row>
+    </Container>
     </>
   );
 };
