@@ -8,18 +8,11 @@ import SearchComponent from "./Search/SearchComponent";
 const Ligi = () => {
   const [ligi, setLigi] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [firstIndex, setFirstIndex] = useState(1);
-  const [lastIndex, setLastIndex] = useState(16);
   const [fillter, setFillter] = useState(ligi);
 
   useEffect(() => {
     onRequest();
-  }, [firstIndex, lastIndex]);
-
-  const getIndex = (first, last) => {
-    setFirstIndex(first);
-    setLastIndex(last);
-  };
+  }, []);
 
   const onRequest = () => {
     setLoading(true);
@@ -41,7 +34,7 @@ const Ligi = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <CardComponent ligi={ligi} getIndex={getIndex} fillter={fillter} />
+        <CardComponent ligi={ligi} fillter={fillter} />
       )}
     </>
   );

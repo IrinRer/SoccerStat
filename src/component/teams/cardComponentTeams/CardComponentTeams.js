@@ -2,7 +2,7 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { List } from "antd";
 
-const CardComponent = ({ ligi, fillter}) => {
+const CardComponentTeams = ({ teams, fillter}) => {
   const arrPageNumber = [];
 
   function onRender(arr) {
@@ -10,7 +10,7 @@ const CardComponent = ({ ligi, fillter}) => {
         arrPageNumber.push({
         id: item.id,
         name: item.name,
-        country: item.country,
+        badge: item.badge
       });
     });
   }
@@ -33,13 +33,15 @@ const CardComponent = ({ ligi, fillter}) => {
           <List.Item key={item.id} >
             <List.Item.Meta
               name={<a href={item.name}>{item.name}</a>}
-              country={item.country}
+              badge={item.badge}
             />
-            <Link to={`/${item.id}`} key={item.id}>
+            <Link to={`/teams/${item.id}`} key={item.id}>
               <Card style={{ width: "18rem" }} className="m-auto shadow-lg">
                 <Card.Body className="d-flex flex-column align-items-center">
                   <Card.Title>{item.name}</Card.Title>
-                  <Card.Text>{item.country}</Card.Text>
+                  {/* <Card.Text className="mt-3"> */}
+                      <img src={item.badge ? item.badge : 'https://apiv3.apifootball.com/badges/2802_hullbridge-sports.jpg'} alt='team-badge' className="mt-3"/>
+                  {/* </Card.Text> */}
                 </Card.Body>
               </Card>
             </Link>
@@ -50,4 +52,4 @@ const CardComponent = ({ ligi, fillter}) => {
   );
 };
 
-export default CardComponent;
+export default CardComponentTeams;

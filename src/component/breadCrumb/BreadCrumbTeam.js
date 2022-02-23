@@ -1,24 +1,26 @@
 import { Breadcrumb } from "antd";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Typography } from 'antd';
+const { Text } = Typography;
 
-const BreadCrumbMatch = ({nameLiga}) => {
-  return (
-    <Container className="mt-4 mb-5">
+const BreadCrumbTeam = ({nameTeam}) => {
+    return (
+      <Container className="mt-4 mb-5">
       <Row>
         <Col md="4">
           <Breadcrumb>
             <Breadcrumb.Item>
-              <Link to="/">Лиги</Link>
+              <Link to="/teams">Команды</Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              <Link to="/ligi/">{nameLiga}</Link>
+              <Link to="/teams/">{nameTeam}</Link>
             </Breadcrumb.Item>
           </Breadcrumb>
         </Col>
       </Row>
     </Container>
-  );
-};
+    )
+}
 
-export default BreadCrumbMatch;
+export default BreadCrumbTeam;

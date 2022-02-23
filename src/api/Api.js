@@ -50,19 +50,22 @@ export const getAllLigi = async () => {
   return res.map(transformLigi);
 };
 
-// export const totalCountApi = async () => {
-//   const res = await getResource(`${_apiBase}competitions/`);
-//   return res.count; 
-// }
+export const getTeams = async (id=146) => {
+  const res = await getResource(`${apiBase}?action=get_teams&league_id=${id}&${apiKey}`);
+  return res.map(transformTeam);
+};
 
-// export const getLiga = async (id) => {
-//   debugger;
-//   const res = await getResource(`${apiBase}?action=get_events&from=2022-02-12&to=2022-03-1&league_id=${id}&${apiKey}`);
-//   return res.map(transformMatches);
-// }
+export const getMatchTeam = async (id, from=dateDefaultFrom, to=dateDefaultTo) => {
+  const res = await getResource(`${apiBase}?action=get_events&from=${from}&to=${to}&team_id=${id}&${apiKey}`);
+  return res.map(transformMatches);
+};
+
+export const getNameTeam = async (id) => {
+  const res = await getResource(`${apiBase}?action=get_teams&team_id=${id}&${apiKey}`);
+  return res.map(transformTeam);
+};
 
 export const getLiga = async (id, from=dateDefaultFrom, to=dateDefaultTo) => {
-  debugger;
   const res = await getResource(`${apiBase}?action=get_events&from=${from}&to=${to}&league_id=${id}&${apiKey}`);
   return res.map(transformMatches);
 }
@@ -72,6 +75,15 @@ const transformLigi = (ligi) => {
     id: ligi.league_id,
     name: ligi.league_name,
     country: ligi.country_name
+  };
+}
+
+
+const transformTeam = (team) => {
+  return {
+    id: team.team_key,
+    name: team.team_name,
+    badge: team.team_badge 
   };
 }
 
@@ -91,4 +103,5 @@ const transformLigi = (ligi) => {
       hometeamPenalty: match.match_hometeam_penalty_score || '',
       awayteamPenalty: match.match_awayteam_penalty_score || ''
     };
+    
 };

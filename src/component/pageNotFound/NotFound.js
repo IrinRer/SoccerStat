@@ -6,7 +6,7 @@ const NotFound = () => {
        <>
           <img style={{ display: 'block', width: "250px", height: "250px",objectFit: 'contain', margin: "0 auto"}}  src={img} alt="Error-404"/>
           <p className={classes.notFound}>Страница не найдена</p>
-          <Link to='/ligi' className={classes.notFound}>Ввернуться на главную страницу</Link>
+          <Link to='/' className={classes.notFound}>Ввернуться на главную страницу</Link>
        </>
     )
 }

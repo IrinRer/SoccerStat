@@ -16,7 +16,7 @@ const LigiItem = () => {
 
   useEffect(() => {
     onRequest();
-  }, []);
+  }, [id]);
 
   const onRequest = () => {
     setLoading(true);
