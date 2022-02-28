@@ -4,9 +4,9 @@ import {LinkContainer  } from "react-router-bootstrap";
 const NavComponent = () => {
     return (
       <>
-        <Nav defaultActiveKey="/" as="ul">
+        <Nav defaultActiveKey="home" as="ul">
           <Nav.Item as="li">
-            <LinkContainer  to="/">
+            <LinkContainer  to="/ligi">
               <Nav.Link>Лиги</Nav.Link>
             </LinkContainer>
           </Nav.Item>
