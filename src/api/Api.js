@@ -30,13 +30,20 @@ let dateDefaultTo= new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.g
 dateDefaultTo = `${dateDefaultTo.getFullYear()}-${dateDefaultTo.getMonth()}-${dateDefaultTo.getDate()}`
 
 const getResource = async (url) => {
-  let res = await fetch(url, {
-    // credentials: "include",
-    // headers: {
-    //   'Access-Control-Allow-Origin': '*'
-    //   // 'Content-Type': 'application/json',
-    // }
-});
+//   let res = await fetch(url, {
+//     // credentials: "include",
+//     // headers: {
+//     //   'Access-Control-Allow-Origin': '*'
+//     //   // 'Content-Type': 'application/json',
+//     // }
+// });
+let res = await fetch(url);
+  // credentials: "include",
+  // headers: {
+  //   'Access-Control-Allow-Origin': '*'
+  //   // 'Content-Type': 'application/json',
+  // }
+
 
   if (!res.ok) {
     throw new Error(`Could not fetch ${url}, status: ${res.status}`);
