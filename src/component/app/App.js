@@ -6,7 +6,6 @@ import LigiItem from "../ligiItem/LigiItem";
 import NotFound from "../pageNotFound/NotFound";
 import Teams from "../teams/Teams";
 import TeamItem from "../teamItem/TeamItem";
-import { useState } from "react";
 
 function App() {
   
@@ -15,9 +14,9 @@ function App() {
         <HeaderComponent />
         <Routes>
           <Route path="/" element={<Ligi />} />
-          {/* <Route path="/ligi" element={<Ligi />} />  */}
-          {/* <Route path="/ligi/:id" element={<LigiItem/>}/> */}
-          <Route path="/:id" element={<LigiItem/>}/>
+          <Route path="/ligi" element={<Ligi />} /> 
+          <Route path="/ligi/:id" element={<LigiItem/>}/>
+          {/* <Route path="/:id" element={<LigiItem/>}/> */}
           <Route path="/teams" element={<Teams/>} /> 
           <Route path="/teams/:id" element={<TeamItem/>} /> 
           <Route path="*" element={<NotFound/>}/>

@@ -4,3 +4,12 @@
     font-weight: 800;
     font-size: 24px;
 }
+
+.notFound[link='true'] {
+    cursor: pointer;
+}
+
+.notFound[link='true']:hover {
+  text-decoration: underline;
+  color: blue;
+}
