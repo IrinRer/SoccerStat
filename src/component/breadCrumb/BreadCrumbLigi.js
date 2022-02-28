@@ -2,7 +2,7 @@ import { Breadcrumb } from "antd";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const BreadCrumbMatch = ({nameLiga}) => {
+const BreadCrumbLigi = ({nameLiga}) => {
   return (
     <Container className="mt-4 mb-5">
       <Row>
@@ -21,4 +21,4 @@ const BreadCrumbMatch = ({nameLiga}) => {
   );
 };
 
-export default BreadCrumbMatch;
+export default BreadCrumbLigi;

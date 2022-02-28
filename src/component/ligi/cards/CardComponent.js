@@ -2,19 +2,19 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { List } from "antd";
 
-const CardComponent = ({ ligi, fillter}) => {
+const CardComponent = ({ fillter }) => {
   const arrPageNumber = [];
 
   function onRender(arr) {
     let items = arr.map((item) => {
-        arrPageNumber.push({
+      arrPageNumber.push({
         id: item.id,
         name: item.name,
         country: item.country,
       });
     });
   }
-  
+
   onRender(fillter);
 
   return (
@@ -30,7 +30,7 @@ const CardComponent = ({ ligi, fillter}) => {
         }}
         dataSource={arrPageNumber}
         renderItem={(item) => (
-          <List.Item key={item.id} >
+          <List.Item key={item.id}>
             <List.Item.Meta
               name={<a href={item.name}>{item.name}</a>}
               country={item.country}

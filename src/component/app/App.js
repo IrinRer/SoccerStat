@@ -14,8 +14,6 @@ function App() {
         <HeaderComponent />
         <Routes>
           <Route path="/" element={<Ligi />} />
-          {/* <Route path="/ligi" element={<Ligi />} /> 
-          <Route path="/ligi/:id" element={<LigiItem/>}/> */}
           <Route path="/:id" element={<LigiItem/>}/>
           <Route path="/teams" element={<Teams/>} /> 
           <Route path="/teams/:id" element={<TeamItem/>} /> 

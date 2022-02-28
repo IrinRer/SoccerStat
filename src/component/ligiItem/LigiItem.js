@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Table } from "antd";
 import { getLiga } from "../../api/Api";
-import BreadCrumbMatch from "../breadCrumb/BreadCrumbMatch";
+import BreadCrumbLigi from "../breadCrumb/BreadCrumbLigi";
 import Spinner from "../spinner/Spinner";
 import FillterDate from "../fillter/FillterDate";
 import NotFound from "../pageNotFound/NotFound";
@@ -34,11 +34,9 @@ const LigiItem = () => {
 
   if (!liga && !error) {
     return <Spinner />;
-  } else if(error) {
-    return <NotFound/>
+  } else if (error) {
+    return <NotFound />;
   }
-
-
 
   let nameLiga = "";
 
@@ -104,29 +102,17 @@ const LigiItem = () => {
 
   let content = onRender(liga);
 
-  // const errorMessage = error ? <NotFound /> : null;
-  // const spinner = loading ? <Spinner /> : null;
-  // const view = !(spinner || errorMessage) ? (
-  //   <Container>
-  //     <Row>
-  //       <Col>
-  //         <Table columns={columns} dataSource={content} />
-  //       </Col>
-  //     </Row>
-  //   </Container>
-  // ) : null;
-
   return (
     <>
-      <BreadCrumbMatch nameLiga={nameLiga} />
+      <BreadCrumbLigi nameLiga={nameLiga} />
       <FillterDate id={id} setLigiItem={setLigiItem} />
       <Container>
-      <Row>
-        <Col>
-          <Table columns={columns} dataSource={content} />
-        </Col>
-      </Row>
-    </Container>
+        <Row>
+          <Col>
+            <Table columns={columns} dataSource={content} />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };

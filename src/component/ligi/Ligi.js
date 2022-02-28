@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { getAllLigi } from "../../api/Api";
 import Spinner from "../spinner/Spinner";
 import CardComponent from "./cards/CardComponent";
-import SearchComponent from "./Search/SearchComponent";
-
+import SearchComponent from "../search/SearchComponent";
 
 const Ligi = () => {
   const [ligi, setLigi] = useState([]);
@@ -24,18 +23,14 @@ const Ligi = () => {
     setLoading(false);
   };
 
-  const getFillterLigi = (arr) => {
+  const getFillter = (arr) => {
     setFillter(arr);
   };
 
   return (
     <>
-      <SearchComponent ligi={ligi} getFillterLigi={getFillterLigi} />
-      {loading ? (
-        <Spinner />
-      ) : (
-        <CardComponent ligi={ligi} fillter={fillter} />
-      )}
+      <SearchComponent ligi={ligi} getFillter={getFillter} /> 
+      {loading ? <Spinner /> : <CardComponent ligi={ligi} fillter={fillter} />}
     </>
   );
 };

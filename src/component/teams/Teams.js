@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { getTeams } from "../../api/Api";
+import SearchComponent from "../search/SearchComponent";
 import Spinner from "../spinner/Spinner";
 import CardComponentTeams from "./cardComponentTeams/CardComponentTeams";
-import SearchComponentTeams from "./search/SearchComponentTeams";
+
 
 
 const Teams = () => {
@@ -24,18 +25,18 @@ const Teams = () => {
     setLoading(false);
   };
 
-  const getFillterLigi = (arr) => {
+  const getFillter = (arr) => {
     setFillter(arr);
   };
 
 
   return (
     <>
-      <SearchComponentTeams teams={teams} getFillterLigi={getFillterLigi} />
+      <SearchComponent teams={teams} getFillter={getFillter} /> 
       {loading ? (
         <Spinner />
       ) : (
-        <CardComponentTeams teams={teams} fillter={fillter} />
+        <CardComponentTeams fillter={fillter} />
       )}
     </>
   );

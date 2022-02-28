@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
 import classes from "./NotFound.module.css";
 import img from "./urban-404.png";
 
@@ -7,7 +6,7 @@ const NotFound = () => {
   const history = useNavigate();
 
   function handleClick() {
-   history(-1);
+    history(-1);
   }
 
   return (
@@ -24,7 +23,7 @@ const NotFound = () => {
         alt="Error-404"
       />
       <p className={classes.notFound}>Страница не найдена</p>
-      <h2 className={classes.notFound} onClick={handleClick} link='true'>
+      <h2 className={classes.notFound} onClick={handleClick} link="true">
         Ввернуться назад
       </h2>
     </>

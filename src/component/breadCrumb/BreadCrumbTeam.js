@@ -1,8 +1,6 @@
 import { Breadcrumb } from "antd";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Typography } from 'antd';
-const { Text } = Typography;
 
 const BreadCrumbTeam = ({nameTeam}) => {
     return (
