@@ -6,7 +6,7 @@ const NavComponent = () => {
       <>
         <Nav defaultActiveKey="home" as="ul">
           <Nav.Item as="li">
-            <LinkContainer  to="/ligi">
+            <LinkContainer  to="/">
               <Nav.Link>Лиги</Nav.Link>
             </LinkContainer>
           </Nav.Item>
