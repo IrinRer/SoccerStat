@@ -31,11 +31,11 @@ dateDefaultTo = `${dateDefaultTo.getFullYear()}-${dateDefaultTo.getMonth()}-${da
 
 const getResource = async (url) => {
   let res = await fetch(url, {
-    credentials: "include",
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-      // 'Content-Type': 'application/json',
-    }
+    // credentials: "include",
+    // headers: {
+    //   'Access-Control-Allow-Origin': '*'
+    //   // 'Content-Type': 'application/json',
+    // }
 });
 
   if (!res.ok) {
