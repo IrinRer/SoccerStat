@@ -12,7 +12,7 @@ const BreadCrumbMatch = ({nameLiga}) => {
               <Link to="/">Лиги</Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              <Link to="/ligi/">{nameLiga}</Link>
+              <Link to="/">{nameLiga}</Link>
             </Breadcrumb.Item>
           </Breadcrumb>
         </Col>
