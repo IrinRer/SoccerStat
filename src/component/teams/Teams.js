@@ -4,8 +4,6 @@ import SearchComponent from "../search/SearchComponent";
 import Spinner from "../spinner/Spinner";
 import CardComponentTeams from "./cardComponentTeams/CardComponentTeams";
 
-
-
 const Teams = () => {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -17,7 +15,9 @@ const Teams = () => {
 
   const onRequest = () => {
     setLoading(true);
-    getTeams().then(setAllTeams);
+    getTeams()
+      .then(setAllTeams)
+      .catch((error) => console.log(`Error ${error} ${error.status}`));
   };
 
   const setAllTeams = (teams) => {
@@ -29,15 +29,10 @@ const Teams = () => {
     setFillter(arr);
   };
 
-
   return (
     <>
-      <SearchComponent teams={teams} getFillter={getFillter} /> 
-      {loading ? (
-        <Spinner />
-      ) : (
-        <CardComponentTeams fillter={fillter} />
-      )}
+      <SearchComponent teams={teams} getFillter={getFillter} />
+      {loading ? <Spinner /> : <CardComponentTeams fillter={fillter} />}
     </>
   );
 };

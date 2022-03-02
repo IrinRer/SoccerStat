@@ -26,7 +26,9 @@ const TeamItem = () => {
   };
 
   const onGetName = () => {
-    getNameTeam(id).then(setNameTeam);
+    getNameTeam(id)
+      .then(setNameTeam)
+      .catch((error) => console.log(`Error ${error} ${error.status}`));
   };
 
   const setNameTeam = (team) => {
@@ -91,9 +93,9 @@ const TeamItem = () => {
           ? `${item.hometeamFtscore} : ${item.awayteamFtscore}`
           : "";
       let scoreOptionally =
-        item.hometeamExtrascore || item.awayteamExtrascore
-          ? `${item.hometeamExtrascore} : ${item.awayteamExtrascore}`
-          : "";
+        item.hometeamExtrascore === "not" && item.awayteamExtrascore === "not"
+          ? ""
+          : `${item.hometeamExtrascore} : ${item.awayteamExtrascore}`;
 
       return {
         key: item.id,

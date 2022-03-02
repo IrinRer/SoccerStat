@@ -15,7 +15,7 @@ const Ligi = () => {
 
   const onRequest = () => {
     setLoading(true);
-    getAllLigi().then(setAllLigi);
+    getAllLigi().then(setAllLigi).catch((error) => console.log(`Error ${error} ${error.status}`));
   };
 
   const setAllLigi = (ligi) => {

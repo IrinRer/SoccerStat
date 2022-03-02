@@ -83,9 +83,9 @@ const LigiItem = () => {
           ? `${item.hometeamFtscore} : ${item.awayteamFtscore}`
           : "";
       let scoreOptionally =
-        item.hometeamExtrascore || item.awayteamExtrascore
-          ? `${item.hometeamExtrascore} : ${item.awayteamExtrascore}`
-          : "";
+        item.hometeamExtrascore === "not" && item.awayteamExtrascore === "not"
+          ? ""
+          : `${item.hometeamExtrascore} : ${item.awayteamExtrascore}`;
 
       return {
         key: item.id,

@@ -23,9 +23,6 @@ const CardComponentTeams = ({ fillter }) => {
         itemLayout="vertical"
         size="large"
         pagination={{
-          onChange: (page) => {
-            console.log(page);
-          },
           pageSize: 12,
         }}
         dataSource={arrPageNumber}
@@ -39,7 +36,6 @@ const CardComponentTeams = ({ fillter }) => {
               <Card style={{ width: "18rem" }} className="m-auto shadow-lg">
                 <Card.Body className="d-flex flex-column align-items-center">
                   <Card.Title>{item.name}</Card.Title>
-                  {/* <Card.Text className="mt-3"> */}
                   <img
                     src={
                       item.badge
@@ -49,7 +45,6 @@ const CardComponentTeams = ({ fillter }) => {
                     alt="team-badge"
                     className="mt-3"
                   />
-                  {/* </Card.Text> */}
                 </Card.Body>
               </Card>
             </Link>
