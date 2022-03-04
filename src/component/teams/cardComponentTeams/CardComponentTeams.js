@@ -1,22 +1,9 @@
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { List } from "antd";
+import withCardComponent from "../../../HOC/withCardComponent";
 
-const CardComponentTeams = ({ fillter }) => {
-  const arrPageNumber = [];
-
-  function onRender(arr) {
-    let items = arr.map((item) => {
-      arrPageNumber.push({
-        id: item.id,
-        name: item.name,
-        badge: item.badge,
-      });
-    });
-  }
-
-  onRender(fillter);
-
+const CardComponentTeams = ({ arrPageNumber }) => {
   return (
     <>
       <List
@@ -55,4 +42,5 @@ const CardComponentTeams = ({ fillter }) => {
   );
 };
 
+export const CardComponentContainer = withCardComponent(CardComponentTeams);
 export default CardComponentTeams;

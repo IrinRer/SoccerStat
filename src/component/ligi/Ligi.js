@@ -1,38 +1,17 @@
-import { useState, useEffect } from "react";
 import { getAllLigi } from "../../api/Api";
 import Spinner from "../spinner/Spinner";
-import CardComponent from "./cards/CardComponent";
+import { CardComponentContainer } from "./cards/CardComponent";
 import SearchComponent from "../search/SearchComponent";
+import withMainComponent from "../../HOC/withMainComponent";
 
-const Ligi = () => {
-  const [ligi, setLigi] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [fillter, setFillter] = useState(ligi);
-
-  useEffect(() => {
-    onRequest();
-  }, []);
-
-  const onRequest = () => {
-    setLoading(true);
-    getAllLigi().then(setAllLigi).catch((error) => console.log(`Error ${error} ${error.status}`));
-  };
-
-  const setAllLigi = (ligi) => {
-    setLigi(ligi);
-    setLoading(false);
-  };
-
-  const getFillter = (arr) => {
-    setFillter(arr);
-  };
-
+const Ligi = ({ item, getFillter, fillter, loading }) => {
   return (
     <>
-      <SearchComponent ligi={ligi} getFillter={getFillter} /> 
-      {loading ? <Spinner /> : <CardComponent ligi={ligi} fillter={fillter} />}
+      <SearchComponent ligi={item} getFillter={getFillter} />
+      {loading ? <Spinner /> : <CardComponentContainer fillter={fillter} />}
     </>
   );
 };
 
+export const LigiContainer = withMainComponent(Ligi, getAllLigi);
 export default Ligi;

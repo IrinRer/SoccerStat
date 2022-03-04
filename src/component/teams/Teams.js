@@ -1,40 +1,16 @@
-import { useState, useEffect } from "react";
 import { getTeams } from "../../api/Api";
+import withMainComponent from "../../HOC/withMainComponent";
 import SearchComponent from "../search/SearchComponent";
 import Spinner from "../spinner/Spinner";
-import CardComponentTeams from "./cardComponentTeams/CardComponentTeams";
+import { CardComponentContainer } from "./cardComponentTeams/CardComponentTeams";
 
-const Teams = () => {
-  const [teams, setTeams] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [fillter, setFillter] = useState(teams);
-
-  useEffect(() => {
-    onRequest();
-  }, []);
-
-  const onRequest = () => {
-    setLoading(true);
-    getTeams()
-      .then(setAllTeams)
-      .catch((error) => console.log(`Error ${error} ${error.status}`));
-  };
-
-  const setAllTeams = (teams) => {
-    setTeams(teams);
-    setLoading(false);
-  };
-
-  const getFillter = (arr) => {
-    setFillter(arr);
-  };
-
+const Teams = ({ item, getFillter, fillter, loading }) => {
   return (
     <>
-      <SearchComponent teams={teams} getFillter={getFillter} />
-      {loading ? <Spinner /> : <CardComponentTeams fillter={fillter} />}
+      <SearchComponent teams={item} getFillter={getFillter} />
+      {loading ? <Spinner /> : <CardComponentContainer fillter={fillter} />}
     </>
   );
 };
-
+export const TeamsContainer = withMainComponent(Teams, getTeams);
 export default Teams;
