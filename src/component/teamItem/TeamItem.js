@@ -7,6 +7,7 @@ import BreadCrumbTeam from "../breadCrumb/BreadCrumbTeam";
 import Spinner from "../spinner/Spinner";
 import FillterDate from "../fillter/FillterDate";
 import NotFound from "../pageNotFound/NotFound";
+import withBreadCrumb from "../../HOC/withBreadCrumb";
 
 const TeamItem = () => {
   const { id } = useParams();
@@ -111,10 +112,12 @@ const TeamItem = () => {
   }
 
   let content = onRender(team);
+  const BreadCrumbComponent = withBreadCrumb(BreadCrumbTeam, nameTeam); 
+
 
   return (
     <>
-      <BreadCrumbTeam nameTeam={nameTeam} />
+      <BreadCrumbComponent />
       <FillterDate id={id} setTeamItem={setTeamItem} />
       <Container>
         <Row>

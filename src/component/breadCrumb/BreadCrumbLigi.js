@@ -2,7 +2,9 @@ import { Breadcrumb } from "antd";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const BreadCrumbLigi = ({ nameLiga }) => {
+
+
+const BreadCrumbLigi = ({ nameData }) => {
   return (
     <Container className="mt-4 mb-5">
       <Row>
@@ -12,7 +14,7 @@ const BreadCrumbLigi = ({ nameLiga }) => {
               <Link to="/">Лиги</Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              <Link to="/">{nameLiga}</Link>
+              <Link to="/">{nameData}</Link>
             </Breadcrumb.Item>
           </Breadcrumb>
         </Col>

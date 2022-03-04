@@ -7,6 +7,7 @@ import BreadCrumbLigi from "../breadCrumb/BreadCrumbLigi";
 import Spinner from "../spinner/Spinner";
 import FillterDate from "../fillter/FillterDate";
 import NotFound from "../pageNotFound/NotFound";
+import withBreadCrumb from "../../HOC/withBreadCrumb";
 
 const LigiItem = () => {
   const { id } = useParams();
@@ -102,9 +103,11 @@ const LigiItem = () => {
 
   let content = onRender(liga);
 
+  const BreadCrumbComponent = withBreadCrumb(BreadCrumbLigi, nameLiga);
+
   return (
     <>
-      <BreadCrumbLigi nameLiga={nameLiga} />
+      <BreadCrumbComponent />
       <FillterDate id={id} setLigiItem={setLigiItem} />
       <Container>
         <Row>

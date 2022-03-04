@@ -1,25 +1,3 @@
-// import * as axios from "axios";
-// const baseURL = "http://api.football-data.org/v2/";
-
-// let instance = axios.create({
-//   headers: {
-//     "X-Auth-Token": "5ec0722770094e06af6c5f4f5e67e770"
-//   }
-// });
-
-// export const LigiApi = {
-//   getLigiApi() {
-//     return instance.get(`${baseURL}competitions/`).then((response) => {
-//       debugger;
-//       console.log(response.competitions);
-//       return response.competitions;
-//     });
-//   },
-// };
-
-// const apiBase = "https://apiv3.apifootball.com/";
-// const apiKey = "APIkey=c786da0b260f3d848f9c68ad8d809ddbc715c972f34a77cdddd97c8839de73c0";
-
 let dateNow = new Date();
 let dateDefaultFrom = `${dateNow.getFullYear()}-${dateNow.getMonth()}-${dateNow.getDate()}`;
 let dateDefaultTo = new Date(
@@ -30,19 +8,7 @@ let dateDefaultTo = new Date(
 dateDefaultTo = `${dateDefaultTo.getFullYear()}-${dateDefaultTo.getMonth()}-${dateDefaultTo.getDate()}`;
 
 const getResource = async (url) => {
-  //   let res = await fetch(url, {
-  //     // credentials: "include",
-  //     // headers: {
-  //     //   'Access-Control-Allow-Origin': '*'
-  //     //   // 'Content-Type': 'application/json',
-  //     // }
-  // });
   let res = await fetch(url);
-  // credentials: "include",
-  // headers: {
-  //   'Access-Control-Allow-Origin': '*'
-  //   // 'Content-Type': 'application/json',
-  // }
 
   if (!res.ok) {
     throw new Error(`Could not fetch ${url}, status: ${res.status}`);
