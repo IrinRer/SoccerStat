@@ -1,7 +1,7 @@
 # Used technologies: 
 
 1. React 
-2. Functional components, React-hooks
+2. Functional components, React-hooks, HOC
 3. CSS
 4. React-router-dom 6
 5. Ant design 
