@@ -24,10 +24,6 @@ const FillterDate = ({ id, setLigiItem, setTeamItem }) => {
     getMatchTeam(id, dateFrom, dateTo).then(setTeamItem);
   };
 
-  const setLigiItemFillter = (match) => {
-    setLigiItem(match);
-  };
-
   function onChange(date, dateString) {
     debugger;
     setdateFrom(dateString[0]);

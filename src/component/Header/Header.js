@@ -1,5 +1,4 @@
 import { Container, Row, Col } from "react-bootstrap";
-import classes from "./Header.module.css";
 import logo from "./logo/slack.png";
 import NavComponent from "./Nav/Nav";
 

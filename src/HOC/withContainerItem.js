@@ -9,7 +9,7 @@ const withContainerItem = (BaseComponent, getData) => {
     const { id } = useParams();
     const [item, setItem] = useState(null);
     const [nameTeam, setName] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [, setLoading] = useState(false);
     const [error, setError] = useState(false);
     let nameLiga;
 

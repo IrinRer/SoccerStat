@@ -3,7 +3,7 @@ const withCardComponent = (BaseComponent) => {
     const arrPageNumber = [];
 
     function onRender(arr) {
-      let items = arr.map((item) => {
+      return arr.forEach((item) => {
         arrPageNumber.push({
           id: item.id,
           name: item.name,
