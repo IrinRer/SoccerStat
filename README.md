@@ -6,7 +6,7 @@
 4. React-router-dom 6
 5. Ant design 
 6. React bootstrap
-7. API - https://apifootball.com (пробный период закончился, поэтому отображается не весь функионал)
+7. API - https://apifootball.com (пробный период закончился, поэтому отображается не весь функционал)
 
 # Getting Started with Create React App
 
